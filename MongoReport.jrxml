@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FirstReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ae7f135-7061-4947-be6e-66935e65141a">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="MongoDbQuery">
+		<![CDATA[{
+    collectionName : 'oms_order'
+}]]>
+	</queryString>
+	<field name="_class" class="java.lang.String"/>
+	<field name="_id" class="org.bson.types.ObjectId"/>
+	<field name="account" class="java.lang.String"/>
+	<field name="avgPx" class="java.lang.Double"/>
+	<field name="buySideClientCode" class="java.lang.String"/>
+	<field name="buySideTradeDate" class="java.lang.String"/>
+	<field name="clOrdID" class="java.lang.String"/>
+	<field name="cumQty" class="java.lang.Double"/>
+	<field name="destId" class="java.lang.String"/>
+	<field name="direction" class="java.lang.Integer"/>
+	<field name="execType" class="java.lang.String"/>
+	<field name="handlInst" class="java.lang.String"/>
+	<field name="hkexExchSeq" class="java.lang.String"/>
+	<field name="isBackedup" class="java.lang.Boolean"/>
+	<field name="lastPx" class="java.lang.Double"/>
+	<field name="lastQty" class="java.lang.Double"/>
+	<field name="leavesQty" class="java.lang.Double"/>
+	<field name="msgSeqNum" class="java.lang.Long"/>
+	<field name="msgSeqNumDest" class="java.lang.Long"/>
+	<field name="msgType" class="java.lang.String"/>
+	<field name="omsTradeDate" class="java.lang.String"/>
+	<field name="ordStatus" class="java.lang.String"/>
+	<field name="ordType" class="java.lang.Integer"/>
+	<field name="orderAction" class="java.lang.Integer"/>
+	<field name="orderID" class="java.lang.String"/>
+	<field name="orderQty" class="java.lang.Double"/>
+	<field name="orderStatus" class="java.lang.String"/>
+	<field name="price" class="java.lang.Double"/>
+	<field name="securityExchange" class="java.lang.String"/>
+	<field name="sellSideTradeDate" class="java.lang.String"/>
+	<field name="side" class="java.lang.Integer"/>
+	<field name="srcId" class="java.lang.String"/>
+	<field name="symbol" class="java.lang.String"/>
+	<field name="timeInForce" class="java.lang.String"/>
+	<field name="transactTime" class="java.util.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="27" uuid="52aef86d-1b56-49fa-bb20-e4b0ad93e554"/>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[OMS Order Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="1130b204-cf50-4ca0-a8ad-90377eb3c0f4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="9a913f85-d984-4d46-bc15-6223ad0746c3"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="14c1104f-267c-4a8e-90f9-4290ef574993"/>
+				<text><![CDATA[buySideClientCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="0" width="87" height="20" uuid="f4886a82-d127-4bd8-8561-8f4571763f98"/>
+				<text><![CDATA[destId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="0" width="100" height="20" uuid="35a5e86f-5d4c-4be2-be09-e2629a2a089b"/>
+				<text><![CDATA[orderAction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="322fe843-6a8f-4e08-b4bd-15ebf89c4715"/>
+				<text><![CDATA[clOrdID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="100" height="20" uuid="c1f05f4c-5f81-43c3-9861-f33d11692874"/>
+				<text><![CDATA[orderID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="bce7874d-e031-4c70-86ed-22f6c0033561"/>
+				<textFieldExpression><![CDATA[$F{buySideClientCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="468" y="0" width="87" height="20" uuid="87a25154-2e8c-4bb6-9ef3-a188577b04f6"/>
+				<textFieldExpression><![CDATA[$F{destId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="2" width="100" height="20" uuid="f65ef2db-2117-4bb1-92a6-ac1f0b2f18ef"/>
+				<textFieldExpression><![CDATA[$F{orderID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="2" width="100" height="20" uuid="88f63e67-0dd6-4e76-a428-c610b3d0ede0"/>
+				<textFieldExpression><![CDATA[$F{clOrdID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="3" width="100" height="20" uuid="52daf5f7-09e8-492d-bc46-2d5ebfd13838"/>
+				<textFieldExpression><![CDATA[$F{orderAction}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="22" splitType="Stretch"/>
+	</summary>
+</jasperReport>
